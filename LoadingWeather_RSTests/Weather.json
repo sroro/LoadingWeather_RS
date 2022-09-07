@@ -1,0 +1,43 @@
+{
+    "coord": {
+        "lon": -1.5833,
+        "lat": 47.1667
+    },
+    "weather": [
+        {
+            "id": 800,
+            "main": "Clear",
+            "description": "ciel dégagé",
+            "icon": "01d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 21.75,
+        "feels_like": 21.76,
+        "temp_min": 20.81,
+        "temp_max": 21.96,
+        "pressure": 1014,
+        "humidity": 68
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 5.14,
+        "deg": 200
+    },
+    "clouds": {
+        "all": 0
+    },
+    "dt": 1662477597,
+    "sys": {
+        "type": 1,
+        "id": 6574,
+        "country": "FR",
+        "sunrise": 1662442316,
+        "sunset": 1662489479
+    },
+    "timezone": 7200,
+    "id": 2990968,
+    "name": "Nantes",
+    "cod": 200
+}
