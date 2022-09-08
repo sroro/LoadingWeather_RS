@@ -1,22 +1,22 @@
 //
-//  CityCellTableViewCell.swift
+//  CustomCellTableViewCell.swift
 //  LoadingWeather_RS
 //
-//  Created by Rodolphe Schnetzer on 07/09/2022.
+//  Created by Rodolphe Schnetzer on 08/09/2022.
 //
 
 import UIKit
 
-class CityCellTableViewCell: UITableViewCell {
+class CustomCellTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nameCity: UILabel!
-    @IBOutlet weak var imageCondition: UIImageView!
-    @IBOutlet weak var temperatureCity: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    @IBOutlet weak var nameCity: UILabel!
+    @IBOutlet weak var temperatureCity: UILabel!
+    @IBOutlet weak var imageCondition: UIImageView!
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -26,13 +26,15 @@ class CityCellTableViewCell: UITableViewCell {
     var cityInformations: Weather? {
         didSet {
             nameCity.text = cityInformations?.name
-            temperatureCity.text = ("\(String(describing: cityInformations?.main.temp)) °C")
+            temperatureCity.text = "\(cityInformations?.main.temp ?? 0)"
             
             if cityInformations?.weather[0].weatherDescription == "nuageux" {
                 imageCondition.image = UIImage(named: "soleilNuageux")
+            } else if cityInformations?.weather[0].weatherDescription == "pluvieux" {
+                imageCondition.image = UIImage(named: "pluie")
             }
             
         }
     }
-
+    
 }
