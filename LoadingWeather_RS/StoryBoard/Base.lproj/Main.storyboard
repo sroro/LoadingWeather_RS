@@ -134,7 +134,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TCB-0l-1y4">
-                                <rect key="frame" x="0.0" y="56" width="414" height="700"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="670"/>
                                 <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="12R-F5-WCg" id="Hu1-H4-Ds1"/>
@@ -152,7 +152,7 @@
                             <constraint firstItem="Hgr-Vn-K2I" firstAttribute="leading" secondItem="TtA-dx-rZ0" secondAttribute="leading" constant="10" id="Vha-8t-ULL"/>
                             <constraint firstItem="TtA-dx-rZ0" firstAttribute="trailing" secondItem="TCB-0l-1y4" secondAttribute="trailing" id="Xyy-PJ-DpT"/>
                             <constraint firstItem="TCB-0l-1y4" firstAttribute="leading" secondItem="TtA-dx-rZ0" secondAttribute="leading" id="deh-gj-DeJ"/>
-                            <constraint firstItem="TCB-0l-1y4" firstAttribute="top" secondItem="TtA-dx-rZ0" secondAttribute="top" id="lSd-79-iiE"/>
+                            <constraint firstItem="TCB-0l-1y4" firstAttribute="top" secondItem="TtA-dx-rZ0" secondAttribute="top" constant="30" id="ej9-sf-lWo"/>
                             <constraint firstItem="jNQ-VX-XLo" firstAttribute="leading" secondItem="TtA-dx-rZ0" secondAttribute="leading" constant="5" id="mXQ-ki-N0y"/>
                             <constraint firstItem="jNQ-VX-XLo" firstAttribute="top" secondItem="Hgr-Vn-K2I" secondAttribute="bottom" constant="5" id="zwK-5C-6Mq"/>
                         </constraints>

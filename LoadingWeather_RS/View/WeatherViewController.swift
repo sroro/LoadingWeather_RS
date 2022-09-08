@@ -35,7 +35,7 @@ class WeatherViewController: UIViewController {
     
     
     //MARK: - Properties
-    
+    let viewModel = ViewModel()
     
     var timer: Timer?
     var timerMessage: Timer?
@@ -71,6 +71,9 @@ class WeatherViewController: UIViewController {
                     switch result {
                     case.failure(_):
                         print("error")
+                        
+                        self.alertError()
+                        
                     case.success(let data):
                         print(data.name)
                         self.arrayCities.append(data)
