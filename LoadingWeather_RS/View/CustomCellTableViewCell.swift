@@ -26,12 +26,20 @@ class CustomCellTableViewCell: UITableViewCell {
     var cityInformations: Weather? {
         didSet {
             nameCity.text = cityInformations?.name
-            temperatureCity.text = "\(cityInformations?.main.temp ?? 0)"
+            temperatureCity.text = "\(cityInformations?.main.temp ?? 0) °C "
             
-            if cityInformations?.weather[0].weatherDescription == "nuageux" {
+            if (cityInformations?.weather[0].weatherDescription == "nuageux") {
                 imageCondition.image = UIImage(named: "soleilNuageux")
-            } else if cityInformations?.weather[0].weatherDescription == "pluvieux" {
+            } else if (cityInformations?.weather[0].weatherDescription == "pluvieux") {
                 imageCondition.image = UIImage(named: "pluie")
+            } else if (cityInformations?.weather[0].weatherDescription == "soleil") {
+                imageCondition.image = UIImage(named: "soleil")
+            } else if (cityInformations?.weather[0].weatherDescription == "nuageux") {
+                imageCondition.image = UIImage(named: "nuage")
+            }  else if (cityInformations?.weather[0].weatherDescription == "ciel dégagé") {
+                imageCondition.image = UIImage(named: "soleil")
+            } else if (cityInformations?.weather[0].weatherDescription == "couvert") {
+                imageCondition.image = UIImage(named: "nuage")
             }
             
         }

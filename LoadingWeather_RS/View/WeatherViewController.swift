@@ -25,23 +25,23 @@ class WeatherViewController: UIViewController {
         tableView.isHidden = true
         tableView.reloadData()
         self.tableView.register(UINib(nibName: "CustomCellTableViewCell", bundle: nil), forCellReuseIdentifier: "cellCity")
-        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(getWeather), userInfo: nil, repeats: true)
+       timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(getWeather), userInfo: nil, repeats: true)
         timerMessage = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(setWaitingMessage), userInfo: nil, repeats: true)
         timerProgressView = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(setProgressView), userInfo: nil, repeats: true)
         
-        
+       
     }
     
     
     
     //MARK: - Properties
-    let viewModel = ViewModel()
     
+    var weatherService = WeatherService()
+
     var timer: Timer?
     var timerMessage: Timer?
     var timerProgressView: Timer?
     
-    var weather = WeatherService()
     var arrayCities = [Weather]()
 
     
@@ -57,6 +57,8 @@ class WeatherViewController: UIViewController {
         " Plus que quelques secondes avant d’avoir le résultat…"
     ]
     
+
+    
     
     //MARK: - Methods
     
@@ -66,16 +68,14 @@ class WeatherViewController: UIViewController {
         if indexCalled <= cityArray.count-1 {
             let cityRandom = cityArray[indexCalled]
             
-            weather.getWeather(place: cityRandom) { result in
+            weatherService.getWeather(place: cityRandom) { result in
                 DispatchQueue.main.async {
                     switch result {
                     case.failure(_):
                         print("error")
-                        
                         self.alertError()
-                        
                     case.success(let data):
-                        print(data.name)
+
                         self.arrayCities.append(data)
                         self.indexCalled += 1
                     }
@@ -84,10 +84,15 @@ class WeatherViewController: UIViewController {
             }
         } else {
             timer?.invalidate()
+           
     
         }
     }
     
+
+
+ 
+        
     
     
     // return Back viewController
@@ -126,8 +131,8 @@ class WeatherViewController: UIViewController {
         }
     }
     
-}
 
+}
 
 extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     
