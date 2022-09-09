@@ -80,9 +80,8 @@
 		4D7754FF28CA5B0B007318F4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4DEF57C028C753340081EE2A /* HomeViewController.swift */,
+				4DEF57D428C753520081EE2A /* StoryBoard */,
 				4D7754F728CA14DD007318F4 /* CustomCellTableViewCell.swift */,
-				4DDC3C6D28C7653E003C220B /* WeatherViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -94,6 +93,15 @@
 				4DDC3C6928C76341003C220B /* WeatherData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4DDD92DA28CB358200C1788F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4DDC3C6D28C7653E003C220B /* WeatherViewController.swift */,
+				4DEF57C028C753340081EE2A /* HomeViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		4DE2CEFD28C8A14300C031DF /* LoadingWeather_RSTests */ = {
@@ -138,9 +146,9 @@
 			children = (
 				4DE2CF0B28C8A3FB00C031DF /* Extensions */,
 				4DEF57D328C753420081EE2A /* OtherFiles */,
+				4DDD92DA28CB358200C1788F /* Controller */,
 				4D7754FF28CA5B0B007318F4 /* View */,
 				4DDC3C6628C76327003C220B /* Model */,
-				4DEF57D428C753520081EE2A /* StoryBoard */,
 				4DEF57CD28C753350081EE2A /* Info.plist */,
 				4DEF57C528C753340081EE2A /* LoadingWeather_RS.xcdatamodeld */,
 			);

@@ -17,6 +17,25 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var waitinMessage: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     
+    @IBOutlet weak var buttonOutlet: UIButton!
+    
+    
+    @IBAction func buttonReload(_ sender: Any) {
+        tableView.isHidden = true
+        buttonOutlet.isHidden = true
+        waitinMessage.isHidden = false
+        indexMessage = 0
+        timer()
+        
+    }
+    
+    @IBAction func returnBackButton(_ sender: Any) {
+        self.dismiss(animated: true)
+        timerGetWeather?.invalidate()
+        progressView.progress = 0.0
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +43,11 @@ class WeatherViewController: UIViewController {
         
         tableView.isHidden = true
         tableView.reloadData()
+        buttonOutlet.isHidden = true
         self.tableView.register(UINib(nibName: "CustomCellTableViewCell", bundle: nil), forCellReuseIdentifier: "cellCity")
-       timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(getWeather), userInfo: nil, repeats: true)
-        timerMessage = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(setWaitingMessage), userInfo: nil, repeats: true)
-        timerProgressView = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(setProgressView), userInfo: nil, repeats: true)
+        timer()
         
-       
+        
     }
     
     
@@ -37,13 +55,13 @@ class WeatherViewController: UIViewController {
     //MARK: - Properties
     
     var weatherService = WeatherService()
-
-    var timer: Timer?
+    
+    var timerGetWeather: Timer?
     var timerMessage: Timer?
     var timerProgressView: Timer?
     
     var arrayCities = [Weather]()
-
+    
     
     var indexCalled = 0
     var indexMessage = 0
@@ -57,7 +75,7 @@ class WeatherViewController: UIViewController {
         " Plus que quelques secondes avant d’avoir le résultat…"
     ]
     
-
+    
     
     
     //MARK: - Methods
@@ -75,31 +93,18 @@ class WeatherViewController: UIViewController {
                         print("error")
                         self.alertError()
                     case.success(let data):
-
+                        print(data.name)
                         self.arrayCities.append(data)
                         self.indexCalled += 1
                     }
                 }
-               
+                
             }
         } else {
-            timer?.invalidate()
-           
-    
+            timerGetWeather?.invalidate()
+            indexCalled = 0
+            
         }
-    }
-    
-
-
- 
-        
-    
-    
-    // return Back viewController
-    @IBAction func returnBackButton(_ sender: Any) {
-        self.dismiss(animated: true)
-        timer?.invalidate()
-        progressView.progress = 0.0
     }
     
     
@@ -110,29 +115,44 @@ class WeatherViewController: UIViewController {
             indexMessage += 1
         } else {indexMessage = 0}
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+50) {
-            self.timerMessage?.invalidate()
-            self.waitinMessage.text = "FINITO"
-        }
     }
     
     
     // Mise en place progressView
     @objc func setProgressView() {
         
+        progressView.isHidden = false
         valueProgressView = valueProgressView + 0.02
         progressView.setProgress(valueProgressView, animated: true)
         
         if valueProgressView >= 1 {
-            progressView.isHidden = true
+            valueProgressView = 0
+            
             timerProgressView?.invalidate()
-            self.tableView.isHidden = false
+            timerMessage?.invalidate()
             self.tableView.reloadData()
+            HideOrNot()
         }
     }
     
-
+    func timer() {
+        timerGetWeather = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(getWeather), userInfo: nil, repeats: true)
+        timerMessage = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(setWaitingMessage), userInfo: nil, repeats: true)
+        timerProgressView = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(setProgressView), userInfo: nil, repeats: true)
+        
+    }
+    
+    func HideOrNot() {
+        progressView.isHidden = true
+        self.tableView.isHidden = false
+        buttonOutlet.isHidden = false
+        waitinMessage.isHidden = true
+    }
+    
 }
+
+
+
 
 extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -146,16 +166,16 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row > arrayCities.count-1){
-        return UITableViewCell()
+            return UITableViewCell()
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellCity", for: indexPath) as?  CustomCellTableViewCell else { return UITableViewCell()}
-        let arrayCity = arrayCities[indexPath.row]
-
-        cell.cityInformations = arrayCity
-        
-       
-        return cell
-        
+            let arrayCity = arrayCities[indexPath.row]
+            
+            cell.cityInformations = arrayCity
+            
+            
+            return cell
+            
         }
     }
     

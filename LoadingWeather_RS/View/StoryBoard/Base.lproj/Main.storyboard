@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,16 +30,16 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oh-0D-wso">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oh-0D-wso">
                                         <rect key="frame" x="0.0" y="120" width="354" height="35"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="bTe-6t-A5o"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Go Météo"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Go Météo"/>
                                         <connections>
                                             <action selector="GoWeatherButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EEb-YH-IjD"/>
                                             <segue destination="4Vk-bz-BPp" kind="show" id="GdX-aa-Wbj"/>
@@ -107,54 +108,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="jNQ-VX-XLo" userLabel="Stack View Bottom">
-                                <rect key="frame" x="5" y="791.5" width="404" height="20.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33c-gP-0n1">
-                                        <rect key="frame" x="0.0" y="0.0" width="28.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <color key="textColor" red="0.35815267099999998" green="0.49952653349999998" blue="0.80987197160000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HZE-Tf-qMV">
-                                        <rect key="frame" x="62.5" y="0.0" width="259.5" height="20.5"/>
-                                    </progressView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d60-Xg-sIU">
-                                        <rect key="frame" x="356" y="0.0" width="48" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <color key="textColor" red="0.96841138599999999" green="0.85910975389999999" blue="0.213223829" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C'est long 60 secondes..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hgr-Vn-K2I">
-                                <rect key="frame" x="10" y="766" width="394" height="20.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.35815267099999998" green="0.49952653349999998" blue="0.80987197160000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TCB-0l-1y4">
-                                <rect key="frame" x="0.0" y="86" width="414" height="670"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="640.5"/>
                                 <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="12R-F5-WCg" id="Hu1-H4-Ds1"/>
                                     <outlet property="delegate" destination="12R-F5-WCg" id="aom-il-Tkv"/>
                                 </connections>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lkB-r3-4XI">
+                                <rect key="frame" x="30" y="741.5" width="354" height="75.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C'est long 60 secondes..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hgr-Vn-K2I">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="0.35815267099999998" green="0.49952653349999998" blue="0.80987197160000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HZE-Tf-qMV">
+                                        <rect key="frame" x="0.0" y="30.5" width="354" height="4"/>
+                                    </progressView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTP-0p-GpE">
+                                        <rect key="frame" x="0.0" y="44.5" width="354" height="31"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                        <color key="tintColor" red="0.96019891589999995" green="0.98332017120000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Reload"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Reload"/>
+                                        <connections>
+                                            <action selector="buttonReload:" destination="12R-F5-WCg" eventType="touchUpInside" id="701-Zi-VM3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TtA-dx-rZ0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="TtA-dx-rZ0" firstAttribute="trailing" secondItem="Hgr-Vn-K2I" secondAttribute="trailing" constant="10" id="In0-S7-rzd"/>
-                            <constraint firstItem="TtA-dx-rZ0" firstAttribute="trailing" secondItem="jNQ-VX-XLo" secondAttribute="trailing" constant="5" id="Jj2-GL-IOr"/>
-                            <constraint firstItem="Hgr-Vn-K2I" firstAttribute="top" secondItem="TCB-0l-1y4" secondAttribute="bottom" constant="10" id="PBK-Dj-AF3"/>
-                            <constraint firstItem="TtA-dx-rZ0" firstAttribute="bottom" secondItem="jNQ-VX-XLo" secondAttribute="bottom" constant="30" id="Q6m-d9-32x"/>
-                            <constraint firstItem="Hgr-Vn-K2I" firstAttribute="leading" secondItem="TtA-dx-rZ0" secondAttribute="leading" constant="10" id="Vha-8t-ULL"/>
+                            <constraint firstItem="TtA-dx-rZ0" firstAttribute="bottom" secondItem="lkB-r3-4XI" secondAttribute="bottom" constant="25" id="3qK-xL-Esg"/>
+                            <constraint firstItem="lkB-r3-4XI" firstAttribute="leading" secondItem="TtA-dx-rZ0" secondAttribute="leading" constant="30" id="QLh-ac-IFQ"/>
                             <constraint firstItem="TtA-dx-rZ0" firstAttribute="trailing" secondItem="TCB-0l-1y4" secondAttribute="trailing" id="Xyy-PJ-DpT"/>
                             <constraint firstItem="TCB-0l-1y4" firstAttribute="leading" secondItem="TtA-dx-rZ0" secondAttribute="leading" id="deh-gj-DeJ"/>
                             <constraint firstItem="TCB-0l-1y4" firstAttribute="top" secondItem="TtA-dx-rZ0" secondAttribute="top" constant="30" id="ej9-sf-lWo"/>
-                            <constraint firstItem="jNQ-VX-XLo" firstAttribute="leading" secondItem="TtA-dx-rZ0" secondAttribute="leading" constant="5" id="mXQ-ki-N0y"/>
-                            <constraint firstItem="jNQ-VX-XLo" firstAttribute="top" secondItem="Hgr-Vn-K2I" secondAttribute="bottom" constant="5" id="zwK-5C-6Mq"/>
+                            <constraint firstItem="lkB-r3-4XI" firstAttribute="centerX" secondItem="S8z-gI-mNy" secondAttribute="centerX" id="uWd-xm-qM1"/>
+                            <constraint firstItem="TtA-dx-rZ0" firstAttribute="trailing" secondItem="lkB-r3-4XI" secondAttribute="trailing" constant="30" id="uXc-Dt-fQo"/>
+                            <constraint firstItem="lkB-r3-4XI" firstAttribute="top" secondItem="TCB-0l-1y4" secondAttribute="bottom" constant="15" id="yoD-4j-u1R"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Météo" largeTitleDisplayMode="always" id="jLc-21-ukV">
@@ -166,6 +164,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonOutlet" destination="hTP-0p-GpE" id="RJv-Rk-som"/>
                         <outlet property="progressView" destination="HZE-Tf-qMV" id="dQa-Jx-YLI"/>
                         <outlet property="tableView" destination="TCB-0l-1y4" id="izU-Mx-FNo"/>
                         <outlet property="waitinMessage" destination="Hgr-Vn-K2I" id="zVU-ie-g3s"/>
@@ -179,6 +178,9 @@
     <resources>
         <image name="pluie" width="721" height="612"/>
         <image name="pluie copie" width="2279" height="1427"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
