@@ -25,6 +25,7 @@ class WeatherViewController: UIViewController {
         buttonOutlet.isHidden = true
         waitinMessage.isHidden = false
         indexMessage = 0
+        indexCalled = 0
         timer()
         
     }
@@ -102,12 +103,13 @@ class WeatherViewController: UIViewController {
             }
         } else {
             timerGetWeather?.invalidate()
-            indexCalled = 0
+          
             
         }
     }
     
     
+    // Mise en place message attente
     @objc func setWaitingMessage() {
         
         if indexMessage <= messages.count-1 {
@@ -118,7 +120,7 @@ class WeatherViewController: UIViewController {
     }
     
     
-    // Mise en place progressView
+    // Mise en place progressView 
     @objc func setProgressView() {
         
         progressView.isHidden = false
