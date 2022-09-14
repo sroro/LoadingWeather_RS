@@ -120,7 +120,7 @@ class WeatherViewController: UIViewController {
     }
     
     
-    // Mise en place progressView 
+    // Mise en place progressView
     @objc func setProgressView() {
         
         progressView.isHidden = false
