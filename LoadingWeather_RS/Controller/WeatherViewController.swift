@@ -16,7 +16,6 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var waitinMessage: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
-    
     @IBOutlet weak var buttonOutlet: UIButton!
     
     
@@ -55,8 +54,8 @@ class WeatherViewController: UIViewController {
     
     //MARK: - Properties
     
-    var weatherService = WeatherService()
-    
+
+    let viewModel = weatherViewModel()
     var timerGetWeather: Timer?
     var timerMessage: Timer?
     var timerProgressView: Timer?
@@ -81,33 +80,22 @@ class WeatherViewController: UIViewController {
     
     //MARK: - Methods
     
-    // Appel réseau API OpenWeather
+
+    
     @objc func getWeather() {
-        
         if indexCalled <= cityArray.count-1 {
             let cityRandom = cityArray[indexCalled]
-            
-            weatherService.getWeather(place: cityRandom) { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case.failure(_):
-                        print("error")
-                        self.alertError()
-                    case.success(let data):
-                        print(data.name)
-                        self.arrayCities.append(data)
-                        self.indexCalled += 1
-                    }
-                }
-                
+            viewModel.getWeather(place: cityRandom)
+            self.viewModel.updateWeather = { [weak self] resultat in
+                guard let array = resultat else { return }
+                self?.arrayCities.append(array)
             }
+            self.indexCalled += 1
         } else {
             timerGetWeather?.invalidate()
-          
-            
         }
+        
     }
-    
     
     // Mise en place message attente
     @objc func setWaitingMessage() {
